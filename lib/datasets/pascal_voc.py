@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 import numpy as np
 import scipy.sparse
 import scipy.io as sio
-import utils.cython_bbox
+import utils.bbox
 import cPickle
 import subprocess
 import uuid
@@ -74,6 +74,8 @@ class pascal_voc(imdb):
         """
         Load the indexes listed in this dataset's image set file.
         """
+        # import pdb
+        # pdb.set_trace()
         # Example path to image set file:
         # self._devkit_path + /VOCdevkit2007/VOC2007/ImageSets/Main/val.txt
         image_set_file = os.path.join(self._data_path, 'ImageSets', 'Main',
@@ -82,6 +84,7 @@ class pascal_voc(imdb):
                 'Path does not exist: {}'.format(image_set_file)
         with open(image_set_file) as f:
             image_index = [x.strip() for x in f.readlines()]
+    
         return image_index
 
     def _get_default_path(self):
